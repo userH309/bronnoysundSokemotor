@@ -4,18 +4,20 @@ import Alamofire
 class dataStorage
 {
     var nameSearchStatus:Bool!
+    var nameArray = [String]()
     
     private var _URL:String!
     private var _searchText:String!
-    
-    var nameArray = [String]()
-    var orgNumberArray = [String]()
-    var startupDateArray = [String]()
-    var aboutArray = [String]()
-    var streetArray = [String]()
-    var postalCodeArray = [String]()
-    var cityArray = [String]()
-    var webpageArray = [String]()
+    static var nameCache:NSCache<NSString, NSString> = NSCache()
+    static var orgNumbeCache:NSCache<NSString, NSString> = NSCache()
+    static var startupCache:NSCache<NSString, NSString> = NSCache()
+    static var aboutCache:NSCache<NSString, NSString> = NSCache()
+    static var streetCache:NSCache<NSString, NSString> = NSCache()
+    static var postalCache:NSCache<NSString, NSString> = NSCache()
+    static var cityCache:NSCache<NSString, NSString> = NSCache()
+    static var numEmployeesCache:NSCache<NSString, NSString> = NSCache()
+    static var webpageCache:NSCache<NSString, NSString> = NSCache()
+    static var searchCache:NSCache<NSString, NSString> = NSCache()
     
     init(searchText:String, nameSearch:Bool)
     {
@@ -23,118 +25,108 @@ class dataStorage
         {
         case false:
             nameSearchStatus = false
-            let searchTextEdit = searchText.replacingOccurrences(of: " ", with: "+")
-            self._searchText = "\(BASE_URL)/\(searchTextEdit).json"
+            self._searchText = "\(BASE_URL)/\(searchText).json"
         default:
             nameSearchStatus = true
-            let searchTextEdit = searchText.replacingOccurrences(of: " ", with: "+")
-            self._searchText = "\(BASE_URL).json?page=0&size=10&$filter=startswith(navn,'\(searchTextEdit)')"
+            self._searchText = "\(BASE_URL)\(searchText)"
         }
-        
     }
     
-    //Last ned data og marker som ferdig med completed().
+    //Start retrieving data from api, sort it and store in cache. Mark as complete when done.
     func downloadData(completed: @escaping downloadComplete)
     {
-        print("URL: \(_searchText)")
-            Alamofire.request(_searchText).responseJSON
+        Alamofire.request(_searchText).responseJSON
+            {
+                response in
+                if let dict = response.result.value as? Dictionary<String,AnyObject>
                 {
-                    response in
-                    if let dict = response.result.value as? Dictionary<String,AnyObject>
+                    if self.nameSearchStatus == true
                     {
-                        if self.nameSearchStatus == true
+                        if let data = dict["data"] as? [Dictionary<String,AnyObject>]
                         {
-                            if let data = dict["data"] as? [Dictionary<String,AnyObject>]
+                            for obj in data
                             {
-                                for obj in data
-                                {
-                                    self.pickData(obj: obj)
-                                }
+                                self.pickData(obj: obj)
+                                
                             }
+                            
                         }
-                        else
-                        {
-                            self.pickData(obj: dict)
-                        }
+                        
                     }
-                    completed()
+                    else
+                    {
+                        self.pickData(obj: dict)
+                        
+                    }
+                    
+                }
+                completed()
             }
             
         }
     
-    //Funksjon får å hente spesifikk data.
+    //Get the specific data.
     func pickData(obj:Dictionary<String,AnyObject>)
     {
-        //Hent navnet på organisasjonen.
+        var name:String!
+        
+        //Get the name.
         if let navn = obj["navn"] as? String
         {
-            self.nameArray.append(navn)
+            name = navn
+            dataStorage.nameCache.setObject(navn as NSString, forKey: name as NSString)
+            nameArray.append(name)
         }
-        //Hent organisasjonsnummer.
+        
+        //Get org number.
         if let organisasjonsnummer = obj["organisasjonsnummer"] as? Int
         {
-            self.orgNumberArray.append("\(organisasjonsnummer)")
+            dataStorage.orgNumbeCache.setObject("\(organisasjonsnummer)" as NSString, forKey: name as NSString)
         }
-        else
+        
+        //Get startup date.
+        if let stiftelsesdato = obj["stiftelsesdato"] as? String
         {
-            self.orgNumberArray.append("")
+            dataStorage.startupCache.setObject(stiftelsesdato as NSString, forKey: name as NSString)
         }
-        //Hent oppstartsdato.
-        if let startDate = obj["stiftelsesdato"] as? String
+        
+        //Get the number of employess
+        if let antallAnsatte = obj["antallAnsatte"] as? Int
         {
-            self.startupDateArray.append(startDate)
+            dataStorage.numEmployeesCache.setObject("\(antallAnsatte)" as NSString, forKey: name as NSString)
         }
-        else
+        
+        //Get homepage.
+        if let hjemmeside = obj["hjemmeside"] as? String
         {
-            self.startupDateArray.append("")
+            dataStorage.webpageCache.setObject("\(hjemmeside)" as NSString, forKey: name as NSString)
         }
-        //Hent eventuell hjemmeside.
-        if let webpage = obj["hjemmeside"] as? String
-        {
-            self.webpageArray.append("http://\(webpage)")
-        }
-        else
-        {
-            self.webpageArray.append("")
-        }
-        //Hent beskrivelse av organisasjonen.
+        
+        //Get description.
         if let naeringskode1 = obj["naeringskode1"] as? Dictionary<String,AnyObject>
         {
             if let beskrivelse = naeringskode1["beskrivelse"] as? String
             {
-                self.aboutArray.append(beskrivelse)
-            }
-            else
-            {
-                self.aboutArray.append("")
+                dataStorage.aboutCache.setObject(beskrivelse as NSString, forKey: name as NSString)
             }
         }
-        //Hent detaljer om adressen.
+        
+        //Enter the address dictionary.
         if let forretningsadresse = obj["forretningsadresse"] as? Dictionary<String,AnyObject>
         {
+            //Get street address.
             if let adresse = forretningsadresse["adresse"] as? String
             {
-                self.streetArray.append(adresse)
+                dataStorage.streetCache.setObject(adresse as NSString, forKey: name as NSString)
             }
-            else
-            {
-                self.streetArray.append("")
-            }
+            //Get postal code.
             if let postnummer = forretningsadresse["postnummer"] as? String
             {
-                self.postalCodeArray.append(postnummer)
-            }
-            else
-            {
-                self.postalCodeArray.append("")
+                dataStorage.postalCache.setObject(postnummer as NSString, forKey: name as NSString)
             }
             if let poststed = forretningsadresse["poststed"] as? String
             {
-                self.cityArray.append(poststed)
-            }
-            else
-            {
-                self.cityArray.append("")
+                dataStorage.cityCache.setObject(poststed as NSString, forKey: name as NSString)
             }
         }
     }

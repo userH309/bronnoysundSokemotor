@@ -12,7 +12,8 @@
 		F23B06FB2018904300DB5051 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F23B06F92018904300DB5051 /* Main.storyboard */; };
 		F23B06FD2018904300DB5051 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F23B06FC2018904300DB5051 /* Assets.xcassets */; };
 		F23B07002018904300DB5051 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F23B06FE2018904300DB5051 /* LaunchScreen.storyboard */; };
-		F2B3FF252018B9BA00EEAC27 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20577902018970B000CB924 /* Alamofire.framework */; };
+		F2955D10201E9BD00007D736 /* bronnoysundSokemotorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2955D0F201E9BD00007D736 /* bronnoysundSokemotorTests.swift */; };
+		F2B3FF252018B9BA00EEAC27 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20577902018970B000CB924 /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		F2B3FF262018B9BA00EEAC27 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F20577902018970B000CB924 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F2B3FF382018BF7E00EEAC27 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2B3FF372018BF4000EEAC27 /* OpenSans-Bold.ttf */; };
 		F2B3FF392018BF7E00EEAC27 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2B3FF362018BF4000EEAC27 /* OpenSans-Regular.ttf */; };
@@ -73,6 +74,13 @@
 			remoteGlobalIDString = E4202FE01B667AA100C997FB;
 			remoteInfo = "Alamofire watchOS";
 		};
+		F2955D12201E9BD00007D736 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F23B06EA2018904200DB5051 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F23B06F12018904300DB5051;
+			remoteInfo = bronnoysundSokemotor;
+		};
 		F2B3FF272018B9BA00EEAC27 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F20577842018970B000CB924 /* Alamofire.xcodeproj */;
@@ -105,6 +113,9 @@
 		F23B06FC2018904300DB5051 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F23B06FF2018904300DB5051 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F23B07012018904300DB5051 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2955D0D201E9BD00007D736 /* bronnoysundSokemotorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bronnoysundSokemotorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2955D0F201E9BD00007D736 /* bronnoysundSokemotorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bronnoysundSokemotorTests.swift; sourceTree = "<group>"; };
+		F2955D11201E9BD00007D736 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2B3FF352018BF4000EEAC27 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		F2B3FF362018BF4000EEAC27 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		F2B3FF372018BF4000EEAC27 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -120,6 +131,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2B3FF252018B9BA00EEAC27 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2955D0A201E9BD00007D736 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +163,7 @@
 			children = (
 				F20577842018970B000CB924 /* Alamofire.xcodeproj */,
 				F23B06F42018904300DB5051 /* bronnoysundSokemotor */,
+				F2955D0E201E9BD00007D736 /* bronnoysundSokemotorTests */,
 				F23B06F32018904300DB5051 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -153,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				F23B06F22018904300DB5051 /* bronnoysundSokemotor.app */,
+				F2955D0D201E9BD00007D736 /* bronnoysundSokemotorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,6 +219,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		F2955D0E201E9BD00007D736 /* bronnoysundSokemotorTests */ = {
+			isa = PBXGroup;
+			children = (
+				F2955D0F201E9BD00007D736 /* bronnoysundSokemotorTests.swift */,
+				F2955D11201E9BD00007D736 /* Info.plist */,
+			);
+			path = bronnoysundSokemotorTests;
+			sourceTree = "<group>";
+		};
 		F2B3FF2B2018BE7700EEAC27 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +268,24 @@
 			productReference = F23B06F22018904300DB5051 /* bronnoysundSokemotor.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F2955D0C201E9BD00007D736 /* bronnoysundSokemotorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2955D1D201E9BD10007D736 /* Build configuration list for PBXNativeTarget "bronnoysundSokemotorTests" */;
+			buildPhases = (
+				F2955D09201E9BD00007D736 /* Sources */,
+				F2955D0A201E9BD00007D736 /* Frameworks */,
+				F2955D0B201E9BD00007D736 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F2955D13201E9BD00007D736 /* PBXTargetDependency */,
+			);
+			name = bronnoysundSokemotorTests;
+			productName = bronnoysundSokemotorTests;
+			productReference = F2955D0D201E9BD00007D736 /* bronnoysundSokemotorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -252,6 +299,11 @@
 					F23B06F12018904300DB5051 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+					};
+					F2955D0C201E9BD00007D736 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F23B06F12018904300DB5051;
 					};
 				};
 			};
@@ -275,6 +327,7 @@
 			projectRoot = "";
 			targets = (
 				F23B06F12018904300DB5051 /* bronnoysundSokemotor */,
+				F2955D0C201E9BD00007D736 /* bronnoysundSokemotorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -345,6 +398,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F2955D0B201E9BD00007D736 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -361,9 +421,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F2955D09201E9BD00007D736 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2955D10201E9BD00007D736 /* bronnoysundSokemotorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F2955D13201E9BD00007D736 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F23B06F12018904300DB5051 /* bronnoysundSokemotor */;
+			targetProxy = F2955D12201E9BD00007D736 /* PBXContainerItemProxy */;
+		};
 		F2B3FF282018B9BA00EEAC27 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Alamofire iOS";
@@ -530,6 +603,38 @@
 			};
 			name = Release;
 		};
+		F2955D14201E9BD10007D736 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UW237Y3M7X;
+				INFOPLIST_FILE = bronnoysundSokemotorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shabibi.bronnoysundSokemotorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bronnoysundSokemotor.app/bronnoysundSokemotor";
+			};
+			name = Debug;
+		};
+		F2955D15201E9BD10007D736 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UW237Y3M7X;
+				INFOPLIST_FILE = bronnoysundSokemotorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shabibi.bronnoysundSokemotorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bronnoysundSokemotor.app/bronnoysundSokemotor";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -547,6 +652,15 @@
 			buildConfigurations = (
 				F23B07052018904300DB5051 /* Debug */,
 				F23B07062018904300DB5051 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2955D1D201E9BD10007D736 /* Build configuration list for PBXNativeTarget "bronnoysundSokemotorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2955D14201E9BD10007D736 /* Debug */,
+				F2955D15201E9BD10007D736 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
