@@ -1,11 +1,8 @@
 import UIKit
 
-class srcResCell: UITableViewCell
-{
+class srcResCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
-    
-    func configureCell(nameInput:String)
-    {
+    func configureCell(nameInput:String) {
         self.name.text = nameInput
     }
 }
